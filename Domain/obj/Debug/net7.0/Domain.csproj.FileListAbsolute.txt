@@ -1,0 +1,24 @@
+D:\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.dll
+D:\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.pdb
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.dll
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.pdb
+D:\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\ref\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\bin\Debug\net7.0\Domain.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\Domain.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Domain\obj\Debug\net7.0\ref\Domain.dll

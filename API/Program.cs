@@ -1,0 +1,86 @@
+using Persistence;
+using Application;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Infrastructure.Repositories;
+using API.TokenService;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<LuxonDB>(opts=>
+{
+    opts.UseNpgsql (builder.Configuration.GetConnectionString("LC"));
+});
+
+builder.Services.AddControllers();
+// builder.Services.AddTransient<Seed>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+// builder.Services.AddAutoMapper();
+builder.Services.AddScoped<ITaskyRepo, TaskyRepo>();
+builder.Services.AddScoped<IAuthRepo, AuthRepo>();
+builder.Services.AddScoped<TokenService>();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+//ADD CORS
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt: Issuer"],
+        ValidAudience = builder.Configuration["Jwt: Audience"],
+     // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt: Key"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretHARDCODED"))
+    };
+});
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+// if (args.Length == 1 && args[0].ToLower() == "seeddata")
+//     SeedData(app);
+// void SeedData(IHost app)
+// {
+//     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+//     using (var scope = scopedFactory.CreateScope())
+//     {
+//         var service = scope.ServiceProvider.GetService<Seed>();
+//         service.SeedDataContext();
+//     }
+// }
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try{
+    var context = services.GetRequiredService<LuxonDB>();
+    // var userManager = services.GetRequiredService<UserManager<AppUser>>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedData(context);
+}
+catch(Exception ex){
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error ocurred during migration");
+}
+
+app.Run();

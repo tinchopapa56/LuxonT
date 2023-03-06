@@ -1,0 +1,34 @@
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.deps.json
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.dll
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.pdb
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Domain.dll
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Persistence.dll
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Domain.pdb
+D:\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Persistence.pdb
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.CopyComplete
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.dll
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\refint\Application.dll
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.pdb
+D:\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\ref\Application.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.deps.json
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Application.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Domain.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\bin\Debug\net7.0\Persistence.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.AssemblyReference.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.AssemblyInfoInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.AssemblyInfo.cs
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.CoreCompileInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.csproj.CopyComplete
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\refint\Application.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\Application.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Application\obj\Debug\net7.0\ref\Application.dll

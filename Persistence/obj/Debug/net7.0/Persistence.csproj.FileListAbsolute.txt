@@ -1,0 +1,34 @@
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.deps.json
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.runtimeconfig.json
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.dll
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.pdb
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Domain.dll
+D:\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Domain.pdb
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.AssemblyReference.cache
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfoInputs.cache
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfo.cs
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.CoreCompileInputs.cache
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.CopyComplete
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.dll
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\refint\Persistence.dll
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.pdb
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.genruntimeconfig.cache
+D:\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\ref\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.deps.json
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.runtimeconfig.json
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Persistence.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\bin\Debug\net7.0\Domain.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.AssemblyReference.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfoInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.AssemblyInfo.cs
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.CoreCompileInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.csproj.CopyComplete
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\refint\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\Persistence.genruntimeconfig.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Persistence\obj\Debug\net7.0\ref\Persistence.dll

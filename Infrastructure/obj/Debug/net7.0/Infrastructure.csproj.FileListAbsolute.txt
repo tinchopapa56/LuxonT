@@ -1,0 +1,38 @@
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Application.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Domain.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Persistence.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Domain.pdb
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Persistence.pdb
+D:\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Application.pdb
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+D:\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+d:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Application.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Domain.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Persistence.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Domain.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Persistence.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\bin\Debug\net7.0\Application.pdb
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+d:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CopyComplete
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+d:\21- CODING\C sharp\LUXON\LuxonT\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
