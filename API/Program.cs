@@ -17,14 +17,12 @@ builder.Services.AddDbContext<LuxonDB>(opts=>
 builder.Services.AddSendGrid(options =>
 {
     // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);
-    options.ApiKey = "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";
+    options.ApiKey = "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";       //ESTA HARDCODEADOOOOOOOOOOOOO
 });
 
 builder.Services.AddControllers();
 
-// builder.Services.AddTransient<Seed>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-// builder.Services.AddAutoMapper();
 builder.Services.AddScoped<ITaskyRepo, TaskyRepo>();
 builder.Services.AddScoped<IAuthRepo, AuthRepo>();
 builder.Services.AddScoped<TokenService>();
@@ -46,6 +44,7 @@ builder.Services.AddSwaggerGen();
             // .WithOrigins("http://localhost:5173");
     });
 });
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options => {
             options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
@@ -53,9 +52,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidateAudience = true,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
+
                 ValidIssuer = "http://localhost:5157",
                 ValidAudience = "http://localhost:5157",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")) //ESTA HARDCODEADO
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")), //ESTA HARDCODEADO
                 // ValidIssuer = builder.Configuration["Jwt: Issuer"],
                 // ValidAudience = builder.Configuration["Jwt: Audience"],
                 // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
