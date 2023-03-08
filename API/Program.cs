@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Infrastructure.Repositories;
 using API.TokenService;
+using SendGrid.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,14 @@ builder.Services.AddDbContext<LuxonDB>(opts=>
 {
     opts.UseNpgsql (builder.Configuration.GetConnectionString("LC"));
 });
+builder.Services.AddSendGrid(options =>
+{
+    // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);
+    options.ApiKey = "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";
+});
 
 builder.Services.AddControllers();
+
 // builder.Services.AddTransient<Seed>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // builder.Services.AddAutoMapper();
@@ -27,7 +34,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //ADD CORS
-
+ builder.Services.AddCors(opt => 
+{
+    opt.AddPolicy("CorsPolicy", policy => 
+    {
+        policy 
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowAnyOrigin();
+            // .AllowCredentials()
+            // .WithOrigins("http://localhost:5173");
+    });
+});
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
         ValidateIssuer = true,
