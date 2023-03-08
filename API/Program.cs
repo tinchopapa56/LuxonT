@@ -46,17 +46,20 @@ builder.Services.AddSwaggerGen();
             // .WithOrigins("http://localhost:5173");
     });
 });
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt: Issuer"],
-        ValidAudience = builder.Configuration["Jwt: Audience"],
-     // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt: Key"]))
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretHARDCODED"))
-    };
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options => {
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "http://localhost:5157",
+                ValidAudience = "http://localhost:5157",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")) //ESTA HARDCODEADO
+                // ValidIssuer = builder.Configuration["Jwt: Issuer"],
+                // ValidAudience = builder.Configuration["Jwt: Audience"],
+                // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            };
 });
 
 var app = builder.Build();

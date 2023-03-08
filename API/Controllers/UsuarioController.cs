@@ -47,7 +47,7 @@ namespace LuxonTasks.Controllers
 
                 var res = new Res 
                 {
-                    Message = "Success!",
+                    Message = token,
                     Data = user,
                 };
 
@@ -74,6 +74,8 @@ namespace LuxonTasks.Controllers
                     return StatusCode(500, ModelState);
                 }
 
+                var token = _TokenService.CreateToken(mappedUsuario);
+
                 //sending mail
                 Res sendMailRES = await SendWelcomeMessageAsync(userData.Email, userData.UserName);
                 if (sendMailRES.Message != "Success!")
@@ -82,7 +84,9 @@ namespace LuxonTasks.Controllers
                     return StatusCode(500, ModelState);
                 }
 
-                return Ok(sendMailRES);
+                return Ok(new Res{Message = token, Data = sendMailRES.Data});
+                // return Ok(sendMailRES);
+
             }
 
 
