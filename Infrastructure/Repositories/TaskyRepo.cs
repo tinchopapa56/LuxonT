@@ -21,14 +21,26 @@ namespace Infrastructure.Repositories
             return changes > 0 ? true : false;
         }
 
-        public ICollection<Tasky> FilterByImportance(string importance)
+        public ICollection<Tasky> FilterByImportance(string importance, string userID)
         {
-            var TasksIMPORTANCE = _DB.Tasks.Where(task => task.Importance == importance).ToList();
+            var user = _DB.Usuarios
+                .Include(u => u.Tasks)
+                .Where(u => u.Id == userID)
+                .FirstOrDefault();
+            if (user == null) return null;
+
+            var TasksIMPORTANCE = user.Tasks.Where(task => task.Importance == importance).ToList();
             return TasksIMPORTANCE;
         }
 
-        public ICollection<Tasky> FilterByStatus(string status)
+        public ICollection<Tasky> FilterByStatus(string status, string userID)
         {
+            var user = _DB.Usuarios
+                .Include(u => u.Tasks)
+                .Where(u => u.Id == userID)
+                .FirstOrDefault();
+            if (user == null) return null;
+
             var tasksSTATUS = _DB.Tasks.Where(task => task.Status == status).ToList();
             return tasksSTATUS;
         }
@@ -41,20 +53,17 @@ namespace Infrastructure.Repositories
 
         public ICollection<Tasky> GetAllMyTasks(string userID)
         {
-            // var userTasks = _DB.Tasks.Where(Task => Task.OwnerId == userID).ToList();
             var user = _DB.Usuarios.Where(u => u.Id == userID).FirstOrDefault();
             if(user == null) return null;
             
             var userTasks = _DB.Tasks.Where(t => t.OwnerId == userID).ToList();
 
-            // var userTasks = user.Tasks.ToList();
             return userTasks;
         }
 
         public Tasky GetTask(Guid taskID)
         {
             var task = _DB.Tasks.Where(task => task.Id == taskID).FirstOrDefault();
-            // var task = _DB.Tasks.Where(task => task.Id == userID).FirstOrDefault();
             return task;
         }
 
@@ -76,7 +85,6 @@ namespace Infrastructure.Repositories
 
         public bool EditTask(Tasky task)
         {
-            //_DB.Tasks.Where(Task => Task.Id == task.Id).FirstOrDefault();
             _DB.Tasks.Update(task); 
             return Save();
         }

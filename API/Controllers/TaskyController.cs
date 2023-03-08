@@ -6,6 +6,7 @@ using AutoMapper;
 using Application;
 using Domain;
 using Application.DTOs;
+using API;
 
 namespace LuxonTasks.Controllers
 {
@@ -55,6 +56,31 @@ namespace LuxonTasks.Controllers
 
             return Ok(tasks);
         }
+        // [Authorize]
+        [HttpGet]
+        [Route("Importance")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
+        public IActionResult FilterByImportance(string importance, string userID)
+        {
+            var tasks = _TasksRepo.FilterByImportance(importance, userID);
+            if(tasks == null) return NotFound();
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            return Ok(tasks);
+        }
+        [HttpGet]
+        [Route("Status")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
+        public IActionResult FilterByStatus(string status, string userID)
+        {
+            var tasks = _TasksRepo.FilterByStatus(status, userID);
+            if(tasks == null) return NotFound();
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            return Ok(tasks);
+        }
        
         [HttpGet("{taskID}")]
         [ProducesResponseType(200, Type = typeof(Tasky))]
@@ -89,16 +115,19 @@ namespace LuxonTasks.Controllers
         [HttpDelete("{taskID}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult DeleteTask([FromBody] Guid taskID)
+        public IActionResult DeleteTask(Guid taskID)
         {
             if (taskID == null) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var taskDeleting = _TasksRepo.GetTask(taskID);
 
-            if(!_TasksRepo.DeleteTask(taskDeleting)) 
+            if(taskDeleting == null) return BadRequest();
+
+            if(_TasksRepo.DeleteTask(taskDeleting) == false) 
             {
-                return BadRequest();
+                ModelState.AddModelError("", "Something Went wrong while AHHH CONTROLLER saving");
+                return StatusCode(500, ModelState);
             }
            
            return Ok("Deleted Succesfully");
@@ -112,9 +141,9 @@ namespace LuxonTasks.Controllers
         {
            if (updatedTask == null) return BadRequest(ModelState);
 
-        //    if (taskId != updatedTask.Id) return BadRequest(ModelState);
-
-           if (_TasksRepo.GetTask(taskID) == null) return NotFound();
+            var existingTask = _TasksRepo.GetTask(taskID);
+            if (existingTask == null) return NotFound();
+            updatedTask.OwnerId = existingTask.OwnerId;
 
            if (!ModelState.IsValid) return BadRequest();
 
@@ -122,11 +151,15 @@ namespace LuxonTasks.Controllers
 
            if (!_TasksRepo.EditTask(taskMap))
            {
-               ModelState.AddModelError("", "Something went wrong updating task");
+               ModelState.AddModelError("", "Something went wrong IN REPO updating task");
                return StatusCode(500, ModelState);
            }
 
-           return NoContent();
+            var res = new Res {
+                Message = "successfull editing",
+                Data = taskMap,
+            };
+           return Ok(res);
 
         }
     }

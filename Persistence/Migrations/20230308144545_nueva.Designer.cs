@@ -12,8 +12,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(LuxonDB))]
-    [Migration("20230308133632_nuevaOWNERid")]
-    partial class nuevaOWNERid
+    [Migration("20230308144545_nueva")]
+    partial class nueva
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

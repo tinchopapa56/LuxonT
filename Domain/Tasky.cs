@@ -5,7 +5,7 @@ namespace Domain
     public class Tasky
     {
         public Guid Id { get; set; }
-        public string OwnerId { get; set; }
+        public string OwnerId { get; set; } = string.Empty;
         // public User owner {get; set;}
         // public Guid ProjectId { get; set; }
         [Required]

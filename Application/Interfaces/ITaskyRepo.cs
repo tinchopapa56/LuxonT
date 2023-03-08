@@ -12,8 +12,8 @@ namespace Application
         bool EditTask(Tasky task);
         bool DeleteTask(Tasky task);
         bool Save();
-        ICollection<Tasky> FilterByImportance(string importance);
-        ICollection<Tasky> FilterByStatus(string status);
+        ICollection<Tasky> FilterByImportance(string importance, string userID);
+        ICollection<Tasky> FilterByStatus(string status, string userID);
 
     }
 }
