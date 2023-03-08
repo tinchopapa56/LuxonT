@@ -49,7 +49,7 @@ namespace LuxonTasks.Controllers
                 var res = new Res 
                 {
                     Message = "Success!",
-                    Data = token,
+                    Data = user,
                 };
 
                 return Ok(res);

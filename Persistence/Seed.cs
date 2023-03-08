@@ -55,6 +55,7 @@ namespace Persistence
                    new Tasky
                    {
                        Title = "Navbar",
+                       OwnerId = "fsa3f3afas",
                        Description = "tremenda descripcion",
                        Importance = "HIGH",
                        Status = "DONE",
@@ -62,6 +63,7 @@ namespace Persistence
                   new Tasky
                    {
                        Title = "Navbar2",
+                       OwnerId = "fsa3f3afas",
                        Description = "tremenda descripcion",
                        Importance = "LOW",
                        Status = "DONE",

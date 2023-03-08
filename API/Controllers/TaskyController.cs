@@ -9,7 +9,7 @@ using Application.DTOs;
 
 namespace LuxonTasks.Controllers
 {
-    [AllowAnonymous]
+    // [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class TaskyController : Controller
@@ -22,12 +22,12 @@ namespace LuxonTasks.Controllers
             _mapper = mapper;
         }
         // Al registrarse en el sitio, el usuario deberá recibir un email de bienvenida. Es recomendable, la
-// utilización de algún servicio de terceros como SendGrid.
+        // utilización de algún servicio de terceros como SendGrid.
 
-// tests de los diferentes endpoints de la APP, verificando
-// - Campos faltantes o con un formato inválido en BODY de las peticiones
-// - Acceso a recursos inexistentes en endpoints de detalle
-// Los tests pueden realizarse utilizando UnitTesting.
+        // tests de los diferentes endpoints de la APP, verificando
+        // - Campos faltantes o con un formato inválido en BODY de las peticiones
+        // - Acceso a recursos inexistentes en endpoints de detalle
+        // Los tests pueden realizarse utilizando UnitTesting.
 
         [AllowAnonymous]
         [HttpGet]
@@ -40,10 +40,41 @@ namespace LuxonTasks.Controllers
 
             return Ok(tasks);
         }
-        [HttpGet("{taskID}")]
+        [Authorize]
+        [HttpGet]
+        [Route("myTasks")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
+        public IActionResult GetAllMyTasks(string userId) 
+        {
+            var tasks = _TasksRepo.GetAllMyTasks(userId);
+            if(tasks == null) return NotFound();
+
+            // var tasksMAPPED = _mapper.Map<List<Tasky>>(tasks);
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            return Ok(tasks);
+        }
+        // [Authorize]
+        // [HttpGet("{taskID}")]
+
         // [HttpGet]
+        // [Route("taskID")]
+        // [ProducesResponseType(200, Type = typeof(Tasky))]
+        // public IActionResult GetTasky(Guid id)
+        // {
+        //     var task = _TasksRepo.GetTask(id);
+        //   if (task == null) return NotFound();
+        //   if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        //     return Ok(task);
+        // }
+
+        [HttpGet]
+        [Route("{taskID}")]
         [ProducesResponseType(200, Type = typeof(Tasky))]
         public IActionResult GetTasky(Guid id)
+        
         {
             var task = _TasksRepo.GetTask(id);
           if (task == null) return NotFound();
@@ -54,16 +85,16 @@ namespace LuxonTasks.Controllers
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult CreateTask([FromBody] TaskyDto task)
+        public IActionResult CreateTask([FromBody] TaskyDto task, string userID)
         {
             if (task == null) return BadRequest();
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var taskMAP = _mapper.Map<Tasky>(task);
 
-           if (! _TasksRepo.CreateTask(taskMAP))
+           if (_TasksRepo.CreateTask(taskMAP, userID) == false)
            {
-               ModelState.AddModelError("", "Something Went wrong while saving");
+               ModelState.AddModelError("", "Something Went wrong while AHHH CONTROLLER saving");
                return StatusCode(500, ModelState);
            }
            return Ok("Succesfully created");
@@ -83,9 +114,6 @@ namespace LuxonTasks.Controllers
             {
                 return BadRequest();
             }
-
-           
-
            
            return Ok("Deleted Succesfully");
         }

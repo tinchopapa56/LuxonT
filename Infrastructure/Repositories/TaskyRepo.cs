@@ -1,6 +1,7 @@
 ﻿using System;
 using Application;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 // namespace Persistence
@@ -38,9 +39,15 @@ namespace Infrastructure.Repositories
             return everyoneTasks;
         }
 
-        public ICollection<Tasky> GetAllTasks(int userID)
+        public ICollection<Tasky> GetAllMyTasks(string userID)
         {
-            var userTasks = _DB.Tasks.Where(Task => Task.OwnerId == userID).ToList();
+            // var userTasks = _DB.Tasks.Where(Task => Task.OwnerId == userID).ToList();
+            var user = _DB.Usuarios.Where(u => u.Id == userID).FirstOrDefault();
+            if(user == null) return null;
+            
+            var userTasks = _DB.Tasks.Where(t => t.OwnerId == userID).ToList();
+
+            // var userTasks = user.Tasks.ToList();
             return userTasks;
         }
 
@@ -51,10 +58,20 @@ namespace Infrastructure.Repositories
             return task;
         }
 
-        public bool CreateTask(Tasky task)
+        public bool CreateTask(Tasky task, string userID)
         {
-            _DB.Tasks.Add(task);
-            return Save();
+           var user = _DB.Usuarios
+            .Include(u => u.Tasks)          //EAGERLY LOADING
+            .Where(u => u.Id == userID)
+            .FirstOrDefault();
+
+            if (user != null) {
+                task.OwnerId = user.Id;
+                _DB.Tasks.Add(task);
+                user.Tasks.Add(task);
+                return Save();
+            }
+            return false;
         }
 
         public bool EditTask(Tasky task)
