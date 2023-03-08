@@ -29,6 +29,22 @@ namespace LuxonTasks.Controllers
             // - Acceso a recursos inexistentes en endpoints de detalle
             // Los tests pueden realizarse utilizando UnitTesting.
 
+        [Authorize]
+        [HttpGet("myTasks/{userId}")]
+        
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
+        public IActionResult GetAllMyTasks(string userId) 
+        {
+            var tasks = _TasksRepo.GetAllMyTasks(userId);
+            if(tasks == null) return NotFound();
+
+            // var tasksMAPPED = _mapper.Map<List<Tasky>>(tasks);
+
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            return Ok(tasks);
+        }
+
         [AllowAnonymous]
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
@@ -42,23 +58,7 @@ namespace LuxonTasks.Controllers
         }
 
         [Authorize]
-        [HttpGet]
-        [Route("myTasks")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
-        public IActionResult GetAllMyTasks(string userId) 
-        {
-            var tasks = _TasksRepo.GetAllMyTasks(userId);
-            if(tasks == null) return NotFound();
-
-            // var tasksMAPPED = _mapper.Map<List<Tasky>>(tasks);
-
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
-            return Ok(tasks);
-        }
-        // [Authorize]
-        [HttpGet]
-        [Route("Importance")]
+        [HttpGet("myTasks/{userID}/{importance}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
         public IActionResult FilterByImportance(string importance, string userID)
         {
@@ -69,8 +69,8 @@ namespace LuxonTasks.Controllers
 
             return Ok(tasks);
         }
-        [HttpGet]
-        [Route("Status")]
+        [Authorize]
+        [HttpGet("myTasks/{userID}/{status}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
         public IActionResult FilterByStatus(string status, string userID)
         {
