@@ -14,9 +14,28 @@ builder.Services.AddDbContext<LuxonDB>(opts=>
 {
     opts.UseNpgsql (builder.Configuration.GetConnectionString("LC"));
 });
+
+// builder.Services.AddDbContext<LuxonDB>(options =>
+// {
+//        // Use connection string provided at runtime by FlyIO.
+//        var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+//        // Parse connection URL to connection string for Npgsql
+//        connUrl = connUrl.Replace("postgres://", string.Empty);
+//        var pgUserPass = connUrl.Split("@")[0];
+//        var pgHostPortDb = connUrl.Split("@")[1];
+//        var pgHostPort = pgHostPortDb.Split("/")[0];
+//        var pgDb = pgHostPortDb.Split("/")[1];
+//        var pgUser = pgUserPass.Split(":")[0];
+//        var pgPass = pgUserPass.Split(":")[1];
+//        var pgHost = pgHostPort.Split(":")[0];
+//        var pgPort = pgHostPort.Split(":")[1];
+//        var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+//        options.UseNpgsql(connStr);      
+// });
 builder.Services.AddSendGrid(options =>
 {
     // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);
+    // options.ApiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY") //TOML;
     options.ApiKey = "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";       //ESTA HARDCODEADOOOOOOOOOOOOO
 });
 
@@ -45,6 +64,9 @@ builder.Services.AddSwaggerGen();
     });
 });
 
+
+// var tokenSecret= Environment.GetEnvironmentVariable("SendGridApiKey"); //TOML;
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options => {
             options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
@@ -55,7 +77,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
                 ValidIssuer = "http://localhost:5157",
                 ValidAudience = "http://localhost:5157",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")), //ESTA HARDCODEADO
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret"))
+
+                // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")), //ESTA HARDCODEADO
+
                 // ValidIssuer = builder.Configuration["Jwt: Issuer"],
                 // ValidAudience = builder.Configuration["Jwt: Audience"],
                 // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
@@ -77,19 +102,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// if (args.Length == 1 && args[0].ToLower() == "seeddata")
-//     SeedData(app);
-// void SeedData(IHost app)
-// {
-//     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-
-//     using (var scope = scopedFactory.CreateScope())
-//     {
-//         var service = scope.ServiceProvider.GetService<Seed>();
-//         service.SeedDataContext();
-//     }
-// }
-
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 
@@ -101,7 +113,7 @@ try{
 }
 catch(Exception ex){
     var logger = services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "An error ocurred during migration");
+    logger.LogError(ex, "An error AHHHHHH PROGRAM AL FINAL ocurred during migration");
 }
 
 app.Run();
