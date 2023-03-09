@@ -57,7 +57,7 @@ namespace LuxonTasks.Controllers
             return Ok(tasks);
         }
 
-        [Authorize]
+        // [Authorize]
         [HttpGet("myTasks/{userID}/{importance}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Tasky>))]
         public IActionResult FilterByImportance(string importance, string userID)
