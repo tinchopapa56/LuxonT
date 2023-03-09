@@ -35,9 +35,7 @@ builder.Services.AddDbContext<LuxonDB>(options =>
 
 builder.Services.AddSendGrid(options =>
 {
-    // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);;
     options.ApiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY"); //TOML;
-    // options.ApiKey = "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";       //ESTA HARDCODEADOOOOOOOOOOOOO
 });
 
 builder.Services.AddControllers();
@@ -60,8 +58,6 @@ builder.Services.AddSwaggerGen();
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowAnyOrigin();
-            // .AllowCredentials()
-            // .WithOrigins("http://localhost:5173");
     });
 });
 
@@ -79,12 +75,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 ValidIssuer = "http://localhost:5157",
                 ValidAudience = "http://localhost:5157",
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSecret))
-
-                // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superIncredibleSecret")), //ESTA HARDCODEADO
-
-                // ValidIssuer = builder.Configuration["Jwt: Issuer"],
-                // ValidAudience = builder.Configuration["Jwt: Audience"],
-                // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
             };
 });
 
