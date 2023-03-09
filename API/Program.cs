@@ -77,19 +77,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// if (args.Length == 1 && args[0].ToLower() == "seeddata")
-//     SeedData(app);
-// void SeedData(IHost app)
-// {
-//     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-
-//     using (var scope = scopedFactory.CreateScope())
-//     {
-//         var service = scope.ServiceProvider.GetService<Seed>();
-//         service.SeedDataContext();
-//     }
-// }
-
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 
@@ -101,7 +88,7 @@ try{
 }
 catch(Exception ex){
     var logger = services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "An error ocurred during migration");
+    logger.LogError(ex, "An error AHHH ERROR EN PROGRSAM ocurred during migration");
 }
 
 app.Run();
