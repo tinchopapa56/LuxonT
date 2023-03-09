@@ -6,18 +6,41 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Infrastructure.Repositories;
 using API.TokenService;
+using SendGrid.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<LuxonDB>(opts=>
+// builder.Services.AddDbContext<LuxonDB>(opts=>
+// {
+//     opts.UseNpgsql (builder.Configuration.GetConnectionString("LC"));
+// });
+
+builder.Services.AddDbContext<LuxonDB>(options =>
 {
-    opts.UseNpgsql (builder.Configuration.GetConnectionString("LC"));
+       // Use connection string provided at runtime by FlyIO.
+       var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+       // Parse connection URL to connection string for Npgsql
+       connUrl = connUrl.Replace("postgres://", string.Empty);
+       var pgUserPass = connUrl.Split("@")[0];
+       var pgHostPortDb = connUrl.Split("@")[1];
+       var pgHostPort = pgHostPortDb.Split("/")[0];
+       var pgDb = pgHostPortDb.Split("/")[1];
+       var pgUser = pgUserPass.Split(":")[0];
+       var pgPass = pgUserPass.Split(":")[1];
+       var pgHost = pgHostPort.Split(":")[0];
+       var pgPort = pgHostPort.Split(":")[1];
+       var connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+       options.UseNpgsql(connStr);      
+});
+
+builder.Services.AddSendGrid(options =>
+{
+    options.ApiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY"); //TOML;
 });
 
 builder.Services.AddControllers();
-// builder.Services.AddTransient<Seed>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-// builder.Services.AddAutoMapper();
 builder.Services.AddScoped<ITaskyRepo, TaskyRepo>();
 builder.Services.AddScoped<IAuthRepo, AuthRepo>();
 builder.Services.AddScoped<TokenService>();
@@ -27,18 +50,32 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //ADD CORS
+ builder.Services.AddCors(opt => 
+{
+    opt.AddPolicy("CorsPolicy", policy => 
+    {
+        policy 
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowAnyOrigin();
+    });
+});
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt: Issuer"],
-        ValidAudience = builder.Configuration["Jwt: Audience"],
-     // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt: Key"]))
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secretHARDCODED"))
-    };
+
+var tokenSecret= Environment.GetEnvironmentVariable("JWT_KEY"); //TOML;
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options => {
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+
+                ValidIssuer = "http://localhost:5157",
+                ValidAudience = "http://localhost:5157",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSecret))
+            };
 });
 
 var app = builder.Build();
@@ -55,19 +92,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-// if (args.Length == 1 && args[0].ToLower() == "seeddata")
-//     SeedData(app);
-// void SeedData(IHost app)
-// {
-//     var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-
-//     using (var scope = scopedFactory.CreateScope())
-//     {
-//         var service = scope.ServiceProvider.GetService<Seed>();
-//         service.SeedDataContext();
-//     }
-// }
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

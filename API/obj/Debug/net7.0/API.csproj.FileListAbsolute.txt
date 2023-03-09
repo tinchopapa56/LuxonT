@@ -117,3 +117,8 @@ D:\21- CODING\C sharp\LUXON\LuxonT\API\obj\Debug\net7.0\refint\API.dll
 D:\21- CODING\C sharp\LUXON\LuxonT\API\obj\Debug\net7.0\API.pdb
 D:\21- CODING\C sharp\LUXON\LuxonT\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 D:\21- CODING\C sharp\LUXON\LuxonT\API\obj\Debug\net7.0\ref\API.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\API\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\API\bin\Debug\net7.0\SendGrid.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\API\bin\Debug\net7.0\SendGrid.Extensions.DependencyInjection.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\API\bin\Debug\net7.0\StarkbankEcdsa.dll
+D:\21- CODING\C sharp\LUXON\LuxonT\API\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
