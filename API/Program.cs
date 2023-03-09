@@ -35,7 +35,7 @@ builder.Services.AddDbContext<LuxonDB>(options =>
 
 builder.Services.AddSendGrid(options =>
 {
-    // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);
+    // options.ApiKey = (builder.Configuration.GetSection("SendGridApiKey").Value);;
     // options.ApiKey = Environment.GetEnvironmentVariable("SENDGRID_APIKEY") //TOML;
     options.ApiKey = "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";       //ESTA HARDCODEADOOOOOOOOOOOOO
 });
